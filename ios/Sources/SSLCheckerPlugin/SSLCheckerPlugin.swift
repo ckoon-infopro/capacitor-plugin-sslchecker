@@ -15,8 +15,12 @@ public class SSLCheckerPlugin: CAPPlugin, CAPBridgedPlugin {
     private let implementation = SSLChecker()
 
     @objc func verify(_ call: CAPPluginCall) {
+        let serverUrl = call.getString("url") ?? ""
+        let fingerprints = (call.getArray("fingerprints", String.self) ?? []) as NSArray
+
+        
         call.resolve([
-            "value": implementation.verify()
+            "value": implementation.verify(serverUrl: serverUrl, allowedFingerprints: fingerprints)
         ])
     }
 }
