@@ -10,14 +10,13 @@ public class SSLCheckerPlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier = "SSLCheckerPlugin"
     public let jsName = "SSLChecker"
     public let pluginMethods: [CAPPluginMethod] = [
-        CAPPluginMethod(name: "echo", returnType: CAPPluginReturnPromise)
+        CAPPluginMethod(name: "verify", returnType: CAPPluginReturnPromise)
     ]
     private let implementation = SSLChecker()
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
+    @objc func verify(_ call: CAPPluginCall) {
         call.resolve([
-            "value": implementation.echo(value)
+            "value": implementation.verify()
         ])
     }
 }
