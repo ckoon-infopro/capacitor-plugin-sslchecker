@@ -22,11 +22,6 @@ public class SSLChecker {
     private static char[] HEX_CHARS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
             'F'};
 
-    public String echo(String value) {
-        Log.i("Echo", value);
-        return value;
-    }
-
     public boolean verify(String serverUrl, JSONArray fingerprints) {
         Log.i(LOG_TAG, "serverUrl: " + serverUrl);
         Log.i(LOG_TAG, "fingerprints: " + String.valueOf(fingerprints));
